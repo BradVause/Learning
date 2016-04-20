@@ -15,7 +15,15 @@ namespace AngularJS
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+            "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularOther").Include(
             "~/Scripts/angular*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angulari18n").Include(
+            "~/Scripts/i18n/angular*"));
+
+            
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
