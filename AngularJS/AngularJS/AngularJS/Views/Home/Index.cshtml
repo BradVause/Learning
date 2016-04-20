@@ -2,10 +2,28 @@
     ViewBag.Title = "Home Page";
 }
 
-@*<div class="jumbotron">
+<style>
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+    .testCssClass
+    {
+        color:red;
+    }
+</style>
+
+<div class="jumbotron">
     <h1>AngularJS</h1>
     <p class="lead">Playground for AngularSJ</p>
-</div>*@
+</div>
 
 <div class="row">
     
@@ -49,6 +67,18 @@
 
     </div>
 
+    <br />
+
+    @* Lesson 3 - Binding CSS Classes *@
+    <div ng-controller="bindingClasses">
+        {{Title}}
+
+        <input type="text" ng-model="value" />
+        <span ng-class="{bold: isBold(), italic: isItalic(), underline: isUnderlined(), testCssClass: getColor()}">Example Text {{value}}</span>
+        @*ng-class value is a list of cssClasses and either true or false, fetched by a controller method*@
+        
+    </div>
+
 </div>
 
 <script type="text/javascript">
@@ -64,6 +94,18 @@
             $scope.favouriteColor;
             $scope.favouriteShape;
 
+        }])
+        .controller("bindingClasses", ["$scope", function ($scope) { //note - your scope must be declared with a $ - otherwise it won't work
+            $scope.Title = "Binding CSS Classes";
+
+            $scope.value = 1;
+
+            $scope.isBold = function () { return $scope.value % 2 === 0; };
+            $scope.isItalic = function () { return $scope.value % 3 === 0; };
+            $scope.isUnderlined = function () { return $scope.value % 5 === 0; };
+            $scope.getColor = function () { return $scope.value > 10; };
         }]);
 
 </script>
+
+<script></script>
